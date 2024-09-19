@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html {
+            background-color: black;
+        }
+    </style>
+    <title>...</title>
+    <script>
+        function detectDeviceAndLanguage() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const userLang = navigator.language || navigator.userLanguage;
+            const folderPath = "pages";
+            let devicePath;
+            if (/android/i.test(userAgent)) {
+                devicePath = "android";
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                devicePath = "ios";
+            } else if (/windows phone/i.test(userAgent)) {
+                devicePath = "windows-phone";
+            } else if (/tablet|ipad|playbook|silk|kindle/.test(userAgent.toLowerCase())) {
+                devicePath = "tablet";
+            } else {
+                devicePath = "pc";
+            }
+            let languagePath;
+            if (userLang.startsWith('pl')) {
+                languagePath = "pl";
+            } else if (userLang.startsWith('en')) {
+                languagePath = "en";
+            } else {
+                languagePath = "en"; // default page if lang not detected
+            }
+            const finalLink = `${folderPath}/${languagePath}/${devicePath}/index.html`;
+            window.location.href = finalLink;
+        }
+        window.onload = detectDeviceAndLanguage;
+    </script>
+</head>
+<body>
+    <h1>...</h1>
+</body>
+</html>

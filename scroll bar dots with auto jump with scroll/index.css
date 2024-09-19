@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+/* Global styles */
+html {
+    scroll-snap-type: y mandatory;
+    font-size: calc(0.5vw + 0.5vh);
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    background-color: black;
+    color: white;
+}
+
+body {
+    margin: 0;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+.sec1, .sec2, .sec3, .sec4, .sec5 {
+    height: 100vh; /* Wysokość sekcji na 100% wysokości okna przeglądarki */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    padding: 2vw;
+    box-sizing: border-box;
+}
+
+/* Scrollbar styles */
+.scroll-indicator {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scroll-indicator .dot {
+    width: 12.5px;
+    height: 12.5px;
+    background-color: #0000ff;
+    border-radius: 50%;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.scroll-indicator .dot.active {
+    background-color: rgb(255, 0, 0);
+    transform: scale(1.5); /* Powiększ aktywną kropkę */
+}
